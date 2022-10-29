@@ -1,0 +1,22 @@
+{
+  "name": "7_6_cypress_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:cy": "cypress open",
+    "cy:screen1:headless": "npx cypress run -b chrome -C cypress.config.js",
+    "cy:screen1:headed": "npx cypress run -b firefox --headed -C cypress.config.js",
+    "cy:screen2:headless": "npx cypress run -b edge -C cypress2.config.js",
+    "cy:screen2:headed": "npx cypress run -b chrome --headed -C cypress2.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6"
+  },
+  "devDependencies": {
+    "cypress": "^10.11.0"
+  }
+}
