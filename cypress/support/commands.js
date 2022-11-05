@@ -50,3 +50,33 @@ Cypress.Commands.add("addFavoriteBook", (bookName, author) => {
   cy.get("#favorite").should("be.checked");
   cy.get('[type="submit"]').click();
 });
+
+Cypress.Commands.add("add To Favorite", (title) => {
+  cy.wait(3000);
+  cy.xpath(`//div[./div[./div[contains(text(), "${title}")]]]`).within(() => {
+    cy.contains("Add to favorite").click();
+  });
+});
+
+Cypress.Commands.add(
+  "checking the location of the book in favorites",
+  (title) => {
+    cy.contains("Favorites").click();
+    cy.contains(`${title}`);
+  }
+);
+
+Cypress.Commands.add("delete Book From Favorites", (title, page) => {
+  if (page == "Favorites") {
+    cy.contains("Favorites").click();
+    cy.xpath(`//div[./div[./div[contains(text(), "${title}")]]]`).within(() => {
+      cy.contains("Delete from favorite").click();
+    });
+  }
+  if (page == "Books list") {
+    cy.contains("Books list").click();
+    cy.xpath(`//div[./div[./div[contains(text(), "${title}")]]]`).within(() => {
+      cy.contains("Delete from favorite").click();
+    });
+  }
+});
